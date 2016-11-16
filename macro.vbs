@@ -11,7 +11,7 @@ Sub bookToMD()
     Dim maxRow As Long
 
     '‰Šú’lİ’è
-    filePath = ActiveWorkbook.Path & "\rowdata.md"
+    filePath = ActiveWorkbook.Path & "\Record_of_reading\rowdata.md"
     maxRow = Range("A1").End(xlDown).Row 'ÅIsæ“¾
 
     Stream.WriteText "|No.|like|Date|Title|" & vbCrLf
