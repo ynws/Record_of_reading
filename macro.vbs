@@ -14,19 +14,19 @@ Sub bookToMD()
     filePath = ActiveWorkbook.Path & "\Record_of_reading\rowdata.md"
     maxRow = Range("A1").End(xlDown).Row '最終行取得
 
-    Stream.WriteText "|No.|like|Date|Title|" & vbCrLf
-    Stream.WriteText "|:---|:---|:---|:---|" & vbCrLf
+    Stream.WriteText "|No.|like|Date|ISBN|Title|" & vbCrLf
+    Stream.WriteText "|:---|:---|:---|:---|:---|" & vbCrLf
 
     For i = 1 To maxRow
         '通し番号
         Stream.WriteText "|" & i
         '色つきの本は★をつける
-        If Cells(i, 2).Font.ColorIndex <> 1 Then
+        If Cells(i, 3).Font.ColorIndex <> 1 Then
             Stream.WriteText "|" & "★"
         Else
             Stream.WriteText "|" & "  "
         End If
-        Stream.WriteText "|" & Cells(i, 1) & "|" & Cells(i, 2) & "|" & vbCrLf
+        Stream.WriteText "|" & Cells(i, 1) & "|" & Cells(i, 2) & "|" & Cells(i, 3) & "|" & vbCrLf
     Next i
 
     Stream.SaveToFile (filePath), 2 '2=上書き保存
