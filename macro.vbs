@@ -17,7 +17,9 @@ Sub bookToMD()
     Stream.WriteText "|No.|like|Date|ISBN|Title|" & vbCrLf
     Stream.WriteText "|:---|:---|:---|:---|:---|" & vbCrLf
 
-    For i = 1 To maxRow
+    For n = 1 To maxRow
+        Dim i
+        i = maxRow - n + 1
         '’Ê‚µ”Ô†
         Stream.WriteText "|" & i
         'F‚Â‚«‚Ì–{‚Íš‚ğ‚Â‚¯‚é
@@ -27,9 +29,10 @@ Sub bookToMD()
             Stream.WriteText "|" & "  "
         End If
         Stream.WriteText "|" & Cells(i, 1) & "|" & Cells(i, 2) & "|" & Cells(i, 3) & "|" & vbCrLf
-    Next i
+    Next n
 
     Stream.SaveToFile (filePath), 2 '2=ã‘‚«•Û‘¶
     Stream.Close
     Set Stream = Nothing
 End Sub
+
